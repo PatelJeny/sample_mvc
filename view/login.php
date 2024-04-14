@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <div class="jumbotron">
         <h1>My website</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus totam placeat laudantium optio, eos iure dicta voluptas repellat non? Ipsa esse corrupti soluta animi nemo eius cumque minima repellat autem.</p>
@@ -33,9 +32,10 @@
 
             <?php
 
-            if($isAuthorized===true){
-                echo("loggedin");
-            }else if($isAuthorized===false){?>
+            if ($isAuthorized === true) {
+                header("Location:dashboard.php");
+            } else if ($isAuthorized === false) {
+            ?>
 
 
                 <div class="alert alert-danger">
@@ -46,7 +46,7 @@
             }
 
 
-                ?>
+            ?>
 
         </form>
     </div>
