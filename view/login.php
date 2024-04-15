@@ -32,9 +32,9 @@
 
             <?php
 
-            if ($isAuthorized === true) {
+            if ($loginUser === true) {
                 header("Location:dashboard.php");
-            } else if ($isAuthorized === false) {
+            } else if ($loginUser === false) {
             ?>
 
 
