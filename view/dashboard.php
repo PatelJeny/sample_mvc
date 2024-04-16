@@ -43,8 +43,18 @@
                                 <h3 class="card-title text_align"><?php echo ($productRow['name']) ?></h3>
                                 <p class="card-title text_align"><?php echo ($productRow['price']) ?></p>
                                 <b class="card-title text_align"><?php echo ($productRow['description']) ?></b>
-                                <a href="view_product.php" class="btn btn-primary">View product</a>
 
+                                <?php
+                                if($isAdmin == true){?>
+                                <a href="" class="btn btn-warning">Edit</a>
+                                <a href="" class="btn btn-danger">Delete</a>
+                              <?php      
+                                }else{
+                                ?>
+                                <a href="product.php?id=<?= $productRow['id'] ?>" class="btn btn-primary">View product</a>
+                                <?php
+                                }
+                                ?>
 
 
 
