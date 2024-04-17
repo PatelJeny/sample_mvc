@@ -13,7 +13,16 @@
     <h2 class="company_name"><?= "Hello ".$_SESSION["name"]  ?></h2>
     <div class="row">
     <div class="col-md-4">
-    <img class="product_img" src="<?php echo ("assets/img/product_img/" . $product['img']) ?>">
+    <img class="product_img" src="../assets/img/product_img/<?= $product->getImg()  ?>">
+    </div>
+    <div class="col-md-4">
+                <h3><?= $product->getName() ?></h3>
+                <p><?= $product->getPrice() ?></p>
+                <p><b><?= $product->getDescription() ?></b></p>
+                <hr>
+                <a href="" class="btn btn-primary">Buy Now</a>
+                <a href="" class="btn btn-warning">Add to cart</a>
+               
     </div>
 
     </div>

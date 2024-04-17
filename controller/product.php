@@ -8,6 +8,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 if($_GET["id"]){
     $product=Product::getProductById($_GET["id"]);
+    
     require ("../view/view_product.php");
 
 }

@@ -3,7 +3,7 @@ require '../utils/db.php';
 class Product{
     private $id,$name,$price,$img,$description;
 
-    public function __construct($id,$name,$price,$img,$description)
+    public function __construct($id=null,$name=null,$price=null,$img=null,$description=null)
     {
         $this->id=$id;
         $this->name=$name;
@@ -28,11 +28,6 @@ class Product{
         return $this->description;
     }
     
-    public function save(){
-       //$result=executeQuery("SELECT * FROM product");
-       //return $result;
-    }
-
     public static function getAllProducts(){
         $result=executeQuery("SELECT * FROM product");
         return $result;
@@ -42,6 +37,14 @@ class Product{
         $productRow=$result->fetch_assoc();
         return new Product($productRow["id"],$productRow["name"],$productRow["price"],$productRow["img"],$productRow["description"]);
     }
+
+
+    public function save(){
+        $result= executeQuery("INSERT INTO product (name,price,img,description) values (' $this->name','$this->price','$this->img','$this->description') ");
+        return $result;
+    }
+
+   
     
        
     

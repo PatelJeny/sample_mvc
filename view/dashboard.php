@@ -15,9 +15,9 @@
         <h2 class="company_name">Shopping Site</h2>
         <ul class="navbar nav">
             <?php
-            if($isAdmin == true) { ?>
+            if ($isAdmin == true) { ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="">New</a>
+                    <a class="nav-link" href="addProduct.php">New</a>
                 </li>
             <?php
             }
@@ -43,20 +43,22 @@
                                 <h3 class="card-title text_align"><?php echo ($productRow['name']) ?></h3>
                                 <p class="card-title text_align"><?php echo ($productRow['price']) ?></p>
                                 <b class="card-title text_align"><?php echo ($productRow['description']) ?></b>
+                            
 
+                            <div class="form-group text_align_center">
                                 <?php
-                                if($isAdmin == true){?>
-                                <a href="" class="btn btn-warning">Edit</a>
-                                <a href="" class="btn btn-danger">Delete</a>
-                              <?php      
-                                }else{
+                                if ($isAdmin == true) { ?>
+                                    <a href="" class="btn btn-warning" class="text_align_center p-3">Edit</a>
+                                    <a href="" class="btn btn-danger" class="text_align_center p-3">Delete</a>
+                                <?php
+                                } else {
                                 ?>
-                                <a href="product.php?id=<?= $productRow['id'] ?>" class="btn btn-primary">View product</a>
+                                    <a href="product.php?id=<?= $productRow['id'] ?>" class="btn btn-primary">View product</a>
                                 <?php
                                 }
                                 ?>
 
-
+                            </div>
 
                             </div>
 
