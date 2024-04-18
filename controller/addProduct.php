@@ -9,36 +9,36 @@ if (isset($_SESSION['id'])) {
 
     $isAdmin = $_SESSION["is_admin"] == 0 ? false : true;
 
-    if($isAdmin===false){
+    if ($isAdmin === false) {
         header("Location:dashboard.php");
     }
 
-    $productAdded=null;
+    $productAdded = null;
     //data also submit
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST["pro_name"] && $_POST["pro_price"] && $_FILES["pro_image"] && $_POST["description"]) {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' &&  isset($_POST["pro_name"]) && isset($_POST["pro_price"]) && isset($_FILES["pro_image"]) && isset($_POST["description"]))  {
 
-        $pathToSave="../assets/img/product_img/".basename($_FILES["pro_image"]["name"]);
-        if(move_uploaded_file($_FILES["pro_image"]["tmp_name"], $pathToSave)==TRUE){
-            $originalFileName= basename($_FILES["pro_image"]["name"]);
+        $pathToSave = "../assets/img/product_img/" . basename($_FILES["pro_image"]["name"]);
+        if (move_uploaded_file($_FILES["pro_image"]["tmp_name"], $pathToSave) == TRUE) {
+
+            $newProduct = new Product(name: $_POST["pro_name"], price: $_POST["pro_price"], img: basename($_FILES["pro_image"]["name"]), description: $_POST["description"]);
+
+            //insert
+            if ($newProduct->save() == true) {
+                $productAdded = true;
+            } else {
+                $productAdded = false;
+            }
         }
+        else{
+            $productAdded = false;
 
-        //save 
+        }
 
         //get name saved fie
 
-        //insert
-        $newProduct=new Product(name:$_POST["name"],price: $_POST["price"],img: $_FILES["img"],description:["description"]);
-        if($newProduct->save()==true){
-            $productAdded=true;
-        }
-        else{
-            $productAdded=false;
-        }
+
     }
     require_once("../view/addProduct.php");
-
 } else {
     header("Location:dashboard.php");
 }
-
-

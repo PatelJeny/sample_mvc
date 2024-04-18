@@ -16,7 +16,7 @@
         <h3>Are you adding new product</h3>
     </div>
     <div class="container">
-        <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <form method="post" enctype="multipart/form-data" action="addProduct.php">
             <div class="form-group">
                 <label for="pro_name">Pro_name</label>
                 <input name="pro_name" type="text" class="form-control" id="pro_name">
