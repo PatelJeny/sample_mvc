@@ -30,6 +30,12 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
      
 }
 
+if(isset($_COOKIE["userID"])){
+     $user=  User::checkUser($_COOKIE["userID"]);
+     header("location:dashboard.php");
+    }
+      
+
 require_once('../view/login.php');
 
 ?>
